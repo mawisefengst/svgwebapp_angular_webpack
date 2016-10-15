@@ -1,0 +1,51 @@
+<div class="container clearfix"> 
+  <div class="header"></div>
+  <div class="intro">
+        <div class="container">We believe in fashion for everyone. To prove it, we asked 50 people across all 50 states to rep their zip's unique style. Want to see your state's look? Click into the interactive map below, shop each style star's outfit and be prepared to catch some serious road-trippin' fever.</div>
+  </div>
+</div>
+
+
+<div class="container clearfix">	
+
+	<on-svg></on-svg>
+
+	<div class="filter_bar">
+        <div class="optionWrapper">
+            <span id="filter_state" class="filter_bar_by_states_by_items">
+              by states <i class="fa fa-angle-down"></i>
+            </span>
+            <div id="retrieveCover_list"></div>
+        </div>
+
+        <div class="optionWrapper">
+            <span id="filter_item" class="filter_bar_by_states_by_items">
+              by items <i class="fa fa-angle-down"></i>
+            </span>
+            <div id="retrieveCover_list_item"></div>
+        </div>
+	</div>
+
+	<list-item ng-repeat="item in AppCtrl.repeatItem"></<list-item>
+
+</div>
+
+<div class="btnContainer clearfix"> 
+
+  <div class="btn_load_more_styles" ng-show="AppCtrl.loadmore" ng-click="AppCtrl.loadmore();">load more styles</div>
+
+</div>
+
+
+<div class="footer">
+    <a class="footer_logo ui-link"></a>
+    <div class="footer_text">
+      Got style? Show us! Take a snap of your best Old Navy look, then tag us on IG — @oldnavy &amp; #50Styles50States
+    </div>
+    <div class="footer_share_icons">
+        <a class="fa fa-facebook ui-link" target="_blank" href="https://www.facebook.com/oldnavy/"></a>
+        <a class="fa fa-twitter ui-link" target="_blank" href="https://twitter.com/oldnavy"></a>
+        <a class="fa fa-instagram ui-link" target="_blank" href="https://www.instagram.com/oldnavy/"></a>
+        <a class="fa fa-pinterest-p ui-link" target="_blank" href="https://www.pinterest.com/oldnavy/"></a>
+    </div>
+</div>

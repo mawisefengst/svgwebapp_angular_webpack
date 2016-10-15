@@ -1,0 +1,95 @@
+    <div class="col-md-12 detailView expand_background clearfix expand show newExpand detailViewObj_{{detailViewObj.showIndex}}">
+
+        <div class="col-md-7">
+           <div class="expand_name">{{detailViewObj.influencer_name}}</div>
+           <div class="full_state">{{detailViewObj.state_full}}</div>
+           <a target="_blank" class="expand_link" href="{{detailViewObj.blog_url}}">{{detailViewObj.blog_display}}</a>
+           <div class="expand_text">{{detailViewObj.statement}}</div>
+           <div class="col-md-12 expandDetail">
+              <div class="shopthelook_header">shop the look</div>
+              <div class="row">
+                        <div class="col-md-6 shopthelook_wrapper">
+                            <div class="shopthelook_subheader">{{detailViewObj.look1_cat_name_show}} </div>
+                           
+                            <div ng-if="detailViewObj.look1_mpn">
+                              <a target="_blank" class="shopthelook_item" href="http://oldnavy.gap.com/browse/product.do?pid={{detailViewObj.look1_mpn}}&mlink=0,people_50states&tid=onsm004625">{{detailViewObj.look1_prod_name}}</a>
+                            </div>
+
+                            <div ng-if="detailViewObj.look1_url">
+                                <a target="_blank" class="shopthelook_item" href="{{detailViewObj.look1_url}}">{{detailViewObj.look1_prod_name}}</a>
+                            </div>
+
+                        </div> 
+
+                        <div class="col-md-6 shopthelook_wrapper">
+                            <div class="shopthelook_subheader">{{detailViewObj.look2_cat_name_show}} </div>
+
+                            <div ng-if="detailViewObj.look2_mpn">
+                              <a target="_blank" class="shopthelook_item" href="http://oldnavy.gap.com/browse/product.do?pid={{detailViewObj.look2_mpn}}&mlink=0,people_50states&tid=onsm004625">{{detailViewObj.look2_prod_name}}</a>
+                            </div>
+
+                            <div ng-if="detailViewObj.look2_url">
+                                <a target="_blank" class="shopthelook_item" href="{{detailViewObj.look2_url}}">{{detailViewObj.look2_prod_name}}</a>
+                            </div>
+
+                        </div> 
+ 
+                        <div class="col-md-6 shopthelook_wrapper">
+                            <div class="shopthelook_subheader">{{detailViewObj.look3_cat_name_show}} </div>
+                            
+                            <div ng-if="detailViewObj.look3_mpn">
+                              <a target="_blank" class="shopthelook_item" href="http://oldnavy.gap.com/browse/product.do?pid={{detailViewObj.look3_mpn}}&mlink=0,people_50states&tid=onsm004625">{{detailViewObj.look3_prod_name}}</a>
+                            </div>
+
+                            <div ng-if="detailViewObj.look3_url">
+                                <a target="_blank" class="shopthelook_item" href="{{detailViewObj.look3_url}}">{{detailViewObj.look3_prod_name}}</a>
+                            </div>
+
+                        </div> 
+
+                        <div class="col-md-6 shopthelook_wrapper">
+                            <div class="shopthelook_subheader">{{detailViewObj.look4_cat_name_show}} </div>
+
+                            <div ng-if="detailViewObj.look4_mpn">
+                              <a target="_blank" class="shopthelook_item" href="http://oldnavy.gap.com/browse/product.do?pid={{detailViewObj.look4_mpn}}&mlink=0,people_50states&tid=onsm004625">{{detailViewObj.look4_prod_name}}</a>
+                             </div>
+
+                            <div ng-if="detailViewObj.look4_mpn">
+                                <a target="_blank" class="shopthelook_item" href="{{detailViewObj.look4_url}}">{{detailViewObj.look4_prod_name}}</a>
+                            </div>
+                        </div> 
+              </div>
+            </div>
+        </div>   
+
+        <div class="col-md-5 rightColumDetail">
+          <img class="expand_photo" src="http://50.secondthought.com/images/original/{{detailViewObj.influencer_image}}" />
+          <div class="expand_two_letter_state">{{detailViewObj.state}}</div>
+        </div>
+
+
+        <div class="row shareRow col-md-3">
+            <div class="col-md-2">
+              <div class="shopthelook_share_header">share</div>
+            </div>
+            <div class="col-md-8">
+              <a class="shopthelook_share_icons fa fa-facebook" href=""></a>
+              <a class="shopthelook_share_icons fa fa-twitter" href=""></a>
+              <a class="shopthelook_share_icons fa fa-pinterest-p" href=""></a>
+             </div>
+        </div> 
+
+<!--
+        <div ng-if="!detailViewObj.first">
+          <a href="javascript:void(0);" class="prevBtn sprite"></a>
+        </div> 
+        
+        <div ng-if="!detailViewObj.last">
+          <a href="javascript:void(0);" class="nextBtn sprite"></a>
+        </div> 
+
+-->
+        
+        <a href="javascript:void(0);" class="closeBtn sprite" ng-click="detailViewItemCtrl.closeBtn();"></a>
+
+      </div>        
