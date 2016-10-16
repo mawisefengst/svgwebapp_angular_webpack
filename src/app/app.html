@@ -12,10 +12,10 @@
 
 	<div class="filter_bar">
         <div class="optionWrapper">
-            <span id="filter_state" class="filter_bar_by_states_by_items">
+            <span id="filter_state" class="filter_bar_by_states_by_items" ng-click="AppCtrl.toggleState()">
               by states <i class="fa fa-angle-down"></i>
             </span>
-            <div id="retrieveCover_list"></div>
+            <div id="retrieveCover_list" ng-class="AppCtrl.showState"><state-list ng-repeat="state in AppCtrl.states"></state-list></div>
         </div>
 
         <div class="optionWrapper">

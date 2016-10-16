@@ -14,6 +14,20 @@ let detailViewItem = () => {
   }
 };
 
+let stateList = () => {
+  return{
+    restrict: "E",
+    replace:true,
+    template: "<span class=dropdown_state_items>{{state}}</span>",
+    link: function($scope, element, attrs){
+       element.on("click",function (event) {
+        $scope.$apply(function(){
+         $scope.$parent.filterState = $scope.state;
+       });
+       });
+    }
+  }
+}
 
 let listItem = ($rootScope,$compile) => {
   return {
@@ -25,31 +39,12 @@ let listItem = ($rootScope,$compile) => {
     link: function($scope, element, attrs){
        element.on("click",function (event) {
           $scope.$apply(function(){
-             /*var $compiledHtml = angular.element("<detail-view-item></<detail-view-item>");
-             var $newScope = $scope.$new(true);
-             $newScope.detailViewObj = $scope.item;
-             $newScope.state = $scope.item.state;
-             var $compiledHtml_result = $compile($compiledHtml)($newScope);*/
              var repeatIndex = $scope.$parent.AppCtrl.repeatItem.indexOf($scope.item);
-             //$scope.$parent.showIndex =  showIndex;
              $scope.$parent.repeatIndex = repeatIndex;
-             /*
-             var showIndex = (Math.floor(repeatIndex /4) + 1) * 4 ;
-             $scope.listItemCtrl.index = showIndex;
-             $newScope.detailViewObj.showIndex = showIndex;
-             var elementResult = document.getElementsByClassName('item_' + showIndex);
-             if($scope.$parent.showIndex ===  showIndex){
-                elementResult = document.getElementsByClassName('detailView');
-                angular.element(elementResult[0]).scope().detailViewObj = $scope.item;
-             }else{
-               $scope.$parent.showIndex =  showIndex;
-               angular.element(elementResult[0]).after($compiledHtml_result);
-             }
-             */
-
           });
        });
-       //close button and scroll
+
+
     }
   }
 };
@@ -70,6 +65,7 @@ let directives = {
     onSvg : onSvg,
     detailViewItem : detailViewItem,
     listItem : listItem,
+    stateList : stateList,
     app : app
 }
 
