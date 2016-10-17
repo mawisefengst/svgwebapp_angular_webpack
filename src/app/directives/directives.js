@@ -21,13 +21,34 @@ let stateList = () => {
     template: "<span class=dropdown_state_items>{{state}}</span>",
     link: function($scope, element, attrs){
        element.on("click",function (event) {
-        $scope.$apply(function(){
-         $scope.$parent.filterState = $scope.state;
-       });
+         $scope.$apply(function(){
+           $scope.$parent.filterState = $scope.state;
+         });
        });
     }
   }
 }
+
+let categoryList = () => {
+  return{
+    restrict: "E",
+    replace:true,
+    template: "<span class=dropdown_state_items>{{category}}</span>",
+    link: function($scope, element, attrs){
+       element.on("click",function (event) {
+         $scope.$apply(function(){
+           //$scope.$parent.filterState = $scope.state;
+           //alert($scope.category);
+            $scope.$parent.filterCatogory = $scope.category;
+         });
+       });
+    }
+  }
+}
+
+
+
+
 
 let listItem = ($rootScope,$compile) => {
   return {
@@ -66,6 +87,7 @@ let directives = {
     detailViewItem : detailViewItem,
     listItem : listItem,
     stateList : stateList,
+    categoryList : categoryList,
     app : app
 }
 

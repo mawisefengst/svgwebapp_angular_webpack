@@ -12,6 +12,7 @@ angular.module(MODULE_NAME, [])
   .directive('detailViewItem', directives.detailViewItem)
   .directive('listItem', directives.listItem)
   .directive('stateList', directives.stateList)
+  .directive('categoryList', directives.categoryList)
   .controller('AppCtrl', controllers.AppCtrl)
   .controller('listItemCtrl', controllers.listItemCtrl)
   .controller('detailViewItemCtrl', controllers.detailViewItemCtrl);

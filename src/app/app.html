@@ -19,10 +19,10 @@
         </div>
 
         <div class="optionWrapper">
-            <span id="filter_item" class="filter_bar_by_states_by_items">
+            <span id="filter_item" class="filter_bar_by_states_by_items" ng-click="AppCtrl.toggleCategory()" >
               by items <i class="fa fa-angle-down"></i>
             </span>
-            <div id="retrieveCover_list_item"></div>
+            <div id="retrieveCover_list_item" ng-class="AppCtrl.showCategories"><category-list ng-repeat="category in AppCtrl.categories"></category-list></div>
         </div>
 	</div>
 

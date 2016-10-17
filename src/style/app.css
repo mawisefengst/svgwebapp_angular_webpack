@@ -21,7 +21,6 @@ footer {
   font-size: 0.8em;
 }
 
-/*
 @font-face {
     font-family: 'Gotham Book';
     src: url('../fonts/ufonts.com_gotham-book-webfont.woff2') format('woff2'),
@@ -66,7 +65,7 @@ footer {
         url("../fonts/b4e1ca8b-2223-4b21-8dfe-99e984de1615.ttf") format("truetype"),
         url("../fonts/a0a267c6-00d0-4a4d-8f9d-c46790abc94b.svg#a0a267c6-00d0-4a4d-8f9d-c46790abc94b") format("svg");
 }
-*/
+
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -371,6 +370,7 @@ text{
   color: rgb(102, 144, 174);
   line-height: 1.667;
 }
+
 .dropdown_state_items_on {
   font-size: 14px;
   font-family: "Cervo W01 Regular";

@@ -33,14 +33,33 @@ class AppCtrl {
     this.repeatItem = this.APP_DATA.slice(0, this.currentPatch * PATCH_AMOUNT);
     this.loadmore = true;
     this.showState = "";
+    this.showCategory = "";
     this.states = this.APP_DATA.map((style) => {
       return style.state
     });
+    this.categories1 = this.APP_DATA.map((style) => {return style.look1_cat_name });
+    this.categories2 = this.APP_DATA.map((style) => {return style.look2_cat_name });
+    this.categories3 = this.APP_DATA.map((style) => {return style.look3_cat_name });
+    this.categories4 = this.APP_DATA.map((style) => {return style.look4_cat_name });
+    this.categories = this.categories1.concat(this.categories2,this.categories3,this.categories4);
+    this.categories = this.categories.filter((item,pos) => {
+      return this.categories.indexOf(item) == pos && item.length;
+    });
+    //console.log(this.categories);
     this.toggleState = function(){
         if(this.showState == "active") this.showState = "";
         else this.showState = "active";
+        this.showCategories = "";
         this.loadmore = false;
     };
+
+    this.toggleCategory = function(){
+        if(this.showCategories == "active") this.showCategories = "";
+        else this.showCategories = "active";
+        this.showState = "";
+        this.loadmore = false;
+    };
+
     this.filter = function(section){
         this.repeatItem = this.APP_DATA.filter((styles) => {
           return styles.region.toLowerCase() === section;
@@ -103,8 +122,20 @@ class AppCtrl {
         }
     });
 
-
-
+    $scope.$watch("filterCatogory",function(newValue,oldValue){
+       if(newValue !== oldValue){
+          //alert(newValue);
+          var $this = $scope.AppCtrl;
+          $this.repeatItem = $this.APP_DATA.filter((styles) => {
+            return styles.look1_cat_name.toLowerCase() === newValue.toLowerCase() ||
+            styles.look2_cat_name.toLowerCase() === newValue.toLowerCase() ||
+            styles.look3_cat_name.toLowerCase() === newValue.toLowerCase() ||
+            styles.look4_cat_name.toLowerCase() === newValue.toLowerCase();
+          });
+          var elementResultOld = document.getElementsByClassName('detailView');
+          angular.element(elementResultOld[0]).remove();
+       }
+    });
   }
 };
 
