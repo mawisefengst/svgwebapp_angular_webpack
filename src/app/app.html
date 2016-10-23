@@ -7,15 +7,15 @@
 
 
 <div class="container clearfix">	
-
 	<on-svg></on-svg>
-
 	<div class="filter_bar">
         <div class="optionWrapper">
             <span id="filter_state" class="filter_bar_by_states_by_items" ng-click="AppCtrl.toggleState()">
               by states <i class="fa fa-angle-down"></i>
             </span>
-            <div id="retrieveCover_list" ng-class="AppCtrl.showState"><state-list ng-repeat="state in AppCtrl.states"></state-list></div>
+            <div id="retrieveCover_list" ng-class="AppCtrl.showState">
+              <state-list ng-repeat="state in AppCtrl.states"></state-list>
+            </div>
         </div>
 
         <div class="optionWrapper">
@@ -25,15 +25,11 @@
             <div id="retrieveCover_list_item" ng-class="AppCtrl.showCategories"><category-list ng-repeat="category in AppCtrl.categories"></category-list></div>
         </div>
 	</div>
-
-	<list-item ng-repeat="item in AppCtrl.repeatItem"></<list-item>
-
+	<list-item detail-index="AppCtrl.detailIndex" show-index="AppCtrl.showIndex" repeat-item="AppCtrl.repeatItem" detail-view-obj="AppCtrl.detailViewObj"></<list-item>
 </div>
 
 <div class="btnContainer clearfix"> 
-
   <div class="btn_load_more_styles" ng-show="AppCtrl.loadmore" ng-click="AppCtrl.loadmore();">load more styles</div>
-
 </div>
 
 

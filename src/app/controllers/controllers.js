@@ -8,7 +8,12 @@ class svgCtrl{
 
 class listItemCtrl {
   constructor($scope, $compile, $element) {
-
+     this.seeDetail =function(influencer_id, itemIndex){
+        $scope.detailIndex = influencer_id - 1;
+        var newShowIndex = (Math.floor((itemIndex) /4) + 1) * 4 ;
+        $scope.showIndex = newShowIndex;
+        $scope.detailViewObj = $scope.$parent.AppCtrl.APP_DATA[$scope.detailIndex];
+     }
   }
 };
 
@@ -17,10 +22,8 @@ class detailViewItemCtrl{
   constructor($scope,$element) {
     this.title = "";
     this.closeBtn = function(notification){
-      $element.removeClass('expand newExpand');
-      if(screen.width< 740) $element.off('touchmove');
-      delete $scope.$parent.repeatIndex;
-      $element.remove();
+      $scope.$parent.$parent.$parent.showIndex = 0;
+      $scope.$parent.$parent.$parent.detailIndex = 0;
     }
   }
 }
@@ -31,6 +34,12 @@ class AppCtrl {
     const PATCH_AMOUNT = 20;
     this.currentPatch = 1;
     this.repeatItem = this.APP_DATA.slice(0, this.currentPatch * PATCH_AMOUNT);
+    this.repeatItem = this.repeatItem.map((style,key) => {
+        return Object.assign({},style,{itemIndex :key});
+    });
+    this.detailIndex = 0;
+    this.showIndex = 0;
+    this.detailViewObj = this.APP_DATA[this.detailIndex];
     this.loadmore = true;
     this.showState = "";
     this.showCategory = "";
@@ -64,14 +73,18 @@ class AppCtrl {
         this.repeatItem = this.APP_DATA.filter((styles) => {
           return styles.region.toLowerCase() === section;
         });
+        this.repeatItem = this.repeatItem.map((style,key) => {
+          return Object.assign({},style,{itemIndex :key});
+        });
+
         this.states = this.repeatItem.map((style) => {
           return style.state
         });
-        var elementResultOld = document.getElementsByClassName('detailView');
-        angular.element(elementResultOld[0]).remove();
-        delete $scope.repeatIndex;
+        this.detailIndex = 0;
+        this.showIndex = 0;
         this.loadmore = false;
         this.showState = "";
+        this.detailViewObj = [];
     };
 
     this.loadmore = function(){
@@ -83,32 +96,7 @@ class AppCtrl {
           this.currentPatch++;
       }
     };
-
-    $scope.$watch("repeatIndex",function(newValue,oldValue){
-       if(typeof newValue != "undefined"){
-           var $compiledHtml = angular.element("<detail-view-item></<detail-view-item>");
-           var $newScope = $scope.$new(true);
-           $newScope.detailViewObj = $scope.AppCtrl.repeatItem[newValue];
-           var newShowIndex = (Math.floor(newValue /4) + 1) * 4 ;
-           if(typeof $newScope.detailViewObj != "undefined") $newScope.detailViewObj.showIndex = newShowIndex;
-           var $compiledHtml_result = $compile($compiledHtml)($newScope);
-           if(newShowIndex > $scope.AppCtrl.repeatItem.length) newShowIndex = $scope.AppCtrl.repeatItem.length
-           var elementResult = document.getElementsByClassName("influencerImgWrapper")[newShowIndex - 1]
-           if(typeof oldValue == "undefined"){
-             angular.element(elementResult).after($compiledHtml_result);
-           }else{
-             var oldShowIndex = (Math.floor(oldValue /4) + 1) * 4 ;
-             if(newShowIndex ===  oldShowIndex){
-                elementResult = document.getElementsByClassName('detailView');
-                angular.element(elementResult[0]).scope().detailViewObj = $newScope.detailViewObj;
-             }else{
-                var elementResultOld = document.getElementsByClassName('detailViewObj_' + oldShowIndex);
-                angular.element(elementResultOld[0]).remove();
-                angular.element(elementResult).after($compiledHtml_result);
-             }
-          }
-        }
-    });
+    
     
     $scope.$watch("filterState",function(newValue,oldValue){
         if(newValue !== oldValue){

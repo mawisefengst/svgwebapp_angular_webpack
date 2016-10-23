@@ -8,6 +8,9 @@ let onSvg = () => {
 let detailViewItem = () => {
   return {
     restrict:'E',
+    scope:{
+      detailViewObj : "="
+    },
     template: require('../templates/detailView.html'),
     controller: 'detailViewItemCtrl',
     controllerAs: 'detailViewItemCtrl'
@@ -46,31 +49,30 @@ let categoryList = () => {
   }
 }
 
-
-
-
-
 let listItem = ($rootScope,$compile) => {
   return {
     restrict:'E',
     template: require('../templates/listItem.html'),
-    replace:true,
     controller: 'listItemCtrl',
     controllerAs: 'listItemCtrl',
+    scope:{
+      detailIndex : "=",
+      repeatItem : "=",
+      detailViewObj : "=",
+      showIndex : "="
+    },
     link: function($scope, element, attrs){
-       element.on("click",function (event) {
+       /*element.on("click",function (event) {
           $scope.$apply(function(){
-             var repeatIndex = $scope.$parent.AppCtrl.repeatItem.indexOf($scope.item);
-             $scope.$parent.repeatIndex = repeatIndex;
+              $scope.detailIndex = 4; 
+             //var detailIndex = $scope.$parent.AppCtrl.repeatItem.indexOf($scope.item);
+             //$scope.$parent.repeatIndex = repeatIndex;
+            // $scope.detailIndex =
           });
-       });
-
-
+       });*/
     }
   }
 };
-
-
 
 let app = () => {
   return {
