@@ -1,5 +1,7 @@
 # angular-webpack
 
+Deployed at Heroku: https://svgangularwebpack.herokuapp.com/
+
 >Warning: Make sure you're using the latest version of Node.js and NPM
 
 ### Quick start
